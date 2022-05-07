@@ -31,7 +31,7 @@
           <div>
             <p>Bill</p>
             <!-- input number, always positive and no up or down arrows -->
-            <input type="number" min="0" id="bill" />
+            <input type="number" min="0" value="0" id="bill" />
           </div>
 
           <!-- Select Tip -->
@@ -52,7 +52,7 @@
           <!-- Numer of People -->
           <div>
             <p>Number of People</p>
-            <input type="number" min="0" id="number_of_people" />
+            <input type="number" min="1" value="1" id="number_of_people" />
           </div>
         </div>
 
@@ -65,16 +65,76 @@
               <p id="tip-amount">$4.25</p>
             </div>
             <div class="row space-between price hr-center">
-              <p class="column">Total <span>/ person</span></p>
+              <p class="column">Total Bill<span>/ person</span></p>
               <p id="total">$4.25</p>
             </div>
           </div>
 
           <!-- Reset Button -->
-          <button class="uppercase">Reset</button>
+          <button class="reset-button uppercase">Reset</button>
         </div>
       </div>
     </main>
-    <script></script>
+    <script>
+      // Variables
+      let bill = document.getElementById("bill"),
+        tip_amount = document.getElementById("tip-amount"),
+        total = document.getElementById("total"),
+        number_of_people = document.getElementById("number_of_people"),
+        custom_percent = document.getElementById("custom_percent"),
+        tip_percent = document.querySelectorAll(".select-tip button"),
+        reset_button = document.querySelector(".reset-button");
+
+      // Functions
+      function calculate() {
+        let bill_value = parseFloat(bill.value),
+          tip_percent_value = 0;
+
+        for (let i = 0; i < tip_percent.length; i++)
+          if (tip_percent[i].classList.contains("active"))
+            tip_percent_value = parseFloat(tip_percent[i].innerHTML);
+
+        let tip_amount_value = bill_value * (tip_percent_value / 100);
+        let total_value = bill_value + tip_amount_value;
+
+        tip_amount.innerHTML = "$" + tip_amount_value.toFixed(2);
+        total.innerHTML = "$" + total_value.toFixed(2);
+      }
+
+      // Event listeners
+      bill.addEventListener("input", calculate);
+      number_of_people.addEventListener("input", calculate);
+      custom_percent.addEventListener("input", () => {
+        if (custom_percent.value.length > 0) {
+          // removes classes from all buttons
+          for (let i = 0; i < tip_percent.length; i++)
+            tip_percent[i].classList.remove("active");
+
+          calculate();
+        }
+      });
+
+      // Event listener for all tip buttons
+      for (let i = 0; i < tip_percent.length; i++) {
+        tip_percent[i].addEventListener("click", function () {
+          for (let j = 0; j < tip_percent.length; j++) {
+            tip_percent[j].classList.remove("active");
+          }
+          this.classList.add("active");
+          calculate();
+        });
+      }
+
+      // Reset button event listener
+      reset_button.addEventListener("click", function () {
+        bill.value = "0";
+        number_of_people.value = "1";
+        custom_percent.value = "";
+        for (let i = 0; i < tip_percent.length; i++) {
+          tip_percent[i].classList.remove("active");
+        }
+        calculate();
+      });
+    </script>
   </body>
 </html>

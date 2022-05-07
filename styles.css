@@ -114,10 +114,13 @@ input[type="number"] {
   margin: 5px;
   width: -webkit-fill-available;
 }
-.select-tip button:hover {
-  background: var(--light-cyan);
-  color: #004948;
+
+.select-tip button:hover,
+.active {
+  background: var(--light-cyan) !important;
+  color: #004948 !important;
 }
+
 .select-tip input {
   width: 90%;
   margin: 5px;
