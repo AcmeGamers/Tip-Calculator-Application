@@ -22,15 +22,16 @@
     />
   </head>
   <body>
-    <main class="column vr-center hr-center screen-height">
-      <h1 class="uppercase absolute">Splitter</h1>
+    <main class="column space-evenly hr-center screen-height">
+      <h1 class="uppercase column"><span>Spli</span> <span>tter</span></h1>
       <div class="row card vr-center">
         <!-- Part 1 -->
         <div id="values" class="">
           <!-- Bill -->
           <div>
             <p>Bill</p>
-            <input type="text" />
+            <!-- input number, always positive and no up or down arrows -->
+            <input type="number" min="0" id="bill" />
           </div>
 
           <!-- Select Tip -->
@@ -44,14 +45,14 @@
             <div class="row space-between">
               <button>25%</button>
               <button>50%</button>
-              <input type="text" placeholder="Custom" />
+              <input type="text" placeholder="Custom" id="custom_percent" />
             </div>
           </div>
 
           <!-- Numer of People -->
           <div>
             <p>Number of People</p>
-            <input type="text" />
+            <input type="number" min="0" id="number_of_people" />
           </div>
         </div>
 
@@ -59,13 +60,13 @@
         <div id="calculation" class="column space-between">
           <div class="column">
             <!-- Total Amount -->
-            <div class="row space-between">
+            <div class="row space-between price hr-center">
               <p class="column">Tip Amount <span>/ person</span></p>
-              <p>$4.25</p>
+              <p id="tip-amount">$4.25</p>
             </div>
-            <div class="row space-between">
-              <p class="column">Tip Amount <span>/ person</span></p>
-              <p>$4.25</p>
+            <div class="row space-between price hr-center">
+              <p class="column">Total <span>/ person</span></p>
+              <p id="total">$4.25</p>
             </div>
           </div>
 
@@ -74,5 +75,6 @@
         </div>
       </div>
     </main>
+    <script></script>
   </body>
 </html>
