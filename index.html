@@ -78,6 +78,7 @@
         </div>
       </div>
     </main>
+    <script src="scripts.js"></script>
     <script>
       // Variables
       let bill = document.getElementById("bill"),
@@ -91,17 +92,31 @@
       // Functions
       function calculate() {
         let bill_value = parseFloat(bill.value),
-          tip_percent_value = 0;
+          tip_percent_value = 0,
+          number_of_people_value = parseFloat(number_of_people.value);
 
+        // Checks if fixed tip is selected
         for (let i = 0; i < tip_percent.length; i++)
           if (tip_percent[i].classList.contains("active"))
             tip_percent_value = parseFloat(tip_percent[i].innerHTML);
 
-        let tip_amount_value = bill_value * (tip_percent_value / 100);
-        let total_value = bill_value + tip_amount_value;
+        // Custom tip
+        if (custom_percent.value) {
+          let custom = parseFloat(custom_percent.value),
+            total = (bill_value * custom) / 100;
 
-        tip_amount.innerHTML = "$" + tip_amount_value.toFixed(2);
-        total.innerHTML = "$" + total_value.toFixed(2);
+          tip_amount.innerHTML = "$" + total.toFixed(2);
+          total.innerHTML = "$" + (bill_value + total).toFixed(2);
+        }
+
+        // Fixed Tip
+        else {
+          let fixed_tip = bill_value * (tip_percent_value / 100),
+            total = bill_value + fixed_tip;
+
+          tip_amount.innerHTML = "$" + fixed_tip.toFixed(2);
+          total.innerHTML = "$" + (bill_value + fixed_tip).toFixed(2);
+        }
       }
 
       // Event listeners
@@ -140,6 +155,7 @@
             tip_percent[j].classList.remove("active");
           }
           this.classList.add("active");
+          custom_percent.value = "";
           calculate();
         });
       }
