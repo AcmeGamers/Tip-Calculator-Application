@@ -103,7 +103,14 @@
 
       // Event listeners
       bill.addEventListener("input", calculate);
-      number_of_people.addEventListener("input", calculate);
+
+      number_of_people.addEventListener("input", () => {
+        number_of_people.value == 0
+          ? number_of_people.classList.add("error")
+          : number_of_people.classList.remove("error");
+        calculate();
+      });
+
       custom_percent.addEventListener("input", () => {
         if (custom_percent.value.length > 0) {
           // removes classes from all buttons
