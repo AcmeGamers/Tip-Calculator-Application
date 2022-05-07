@@ -51,7 +51,10 @@
 
           <!-- Numer of People -->
           <div>
-            <p>Number of People</p>
+            <p class="row space-between hr-center">
+              Number of People
+              <span class="hidden red">Cannot be empty or 0</span>
+            </p>
             <input type="number" min="1" value="1" id="number_of_people" />
           </div>
         </div>
@@ -105,9 +108,18 @@
       bill.addEventListener("input", calculate);
 
       number_of_people.addEventListener("input", () => {
-        number_of_people.value == 0
-          ? number_of_people.classList.add("error")
-          : number_of_people.classList.remove("error");
+        if (number_of_people.value == 0) {
+          number_of_people.classList.add("error");
+          number_of_people.previousElementSibling
+            .querySelector("span")
+            .classList.remove("hidden");
+        } else {
+          number_of_people.classList.remove("error");
+          number_of_people.previousElementSibling
+            .querySelector("span")
+            .classList.add("hidden");
+        }
+
         calculate();
       });
 

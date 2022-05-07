@@ -127,6 +127,15 @@ input[type="number"] {
   text-align: center;
 }
 
+#number_of_people {
+  border: 1px transparent solid;
+}
+.error,
+.error:focus-visible {
+  border: 1px solid red !important;
+  outline: red !important;
+}
+
 /* Part 2 */
 #calculation {
   background: var(--primary-dark);
@@ -192,6 +201,12 @@ p span {
 }
 .uppercase {
   text-transform: uppercase;
+}
+.hidden {
+  display: none;
+}
+.red {
+  color: red;
 }
 
 /* media query */
