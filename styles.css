@@ -108,6 +108,11 @@ input[type="number"] {
   transform: translate(10px, -38px);
 }
 
+.tip-button {
+  column-count: 3;
+  column-gap: 0;
+}
+
 .select-tip button {
   background: var(--primary-dark);
   color: white;
@@ -122,7 +127,7 @@ input[type="number"] {
 }
 
 .select-tip input {
-  width: 90%;
+  width: -webkit-fill-available;
   margin: 5px;
   text-align: center;
 }
@@ -143,9 +148,7 @@ input[type="number"] {
   padding: 50px;
   border-radius: 10px;
 }
-#calculation > div > div > p:nth-child(1) {
-  margin-right: 50px;
-}
+
 p span {
   font-size: 13px;
 }
@@ -210,36 +213,43 @@ p span {
 }
 
 /* media query */
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 1000px) and (min-width: 680px) {
+  .card {
+    width: 90vw;
+  }
+}
+
+@media screen and (max-width: 680px) {
   main {
-    display: flex;
-    flex-direction: column;
-    margin-top: 100px;
     height: auto !important;
   }
-
-  .image {
-    order: 1;
-    border-radius: 5px 5px 0 0;
-  }
-
-  .card,
-  .image {
-    width: 90%;
-  }
-
   .card {
-    order: 2;
-    padding: 25px 0;
-    text-align: center;
-    height: inherit;
-    margin-bottom: 100px;
-    border-radius: 0 0 5px 5px;
+    width: -webkit-fill-available;
+    flex-wrap: wrap;
+    border-radius: 20px;
   }
-  .list {
-    flex-direction: column;
+
+  #values,
+  #calculation {
+    width: -webkit-fill-available;
   }
-  .list li {
-    margin-bottom: 25px;
+  #values {
+    margin-right: 0;
+  }
+  #values > div:not(:first-child) {
+    margin-top: 0;
+  }
+  #values > div {
+    margin-bottom: 35px;
+  }
+  #calculation {
+    padding: 25px;
+  }
+  .price p:nth-child(2) {
+    font-size: 30px;
+  }
+
+  .tip-button {
+    column-count: 2;
   }
 }
