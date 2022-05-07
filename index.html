@@ -22,7 +22,57 @@
     />
   </head>
   <body>
-    Bill Select Tip % 5% 10% 15% 25% 50% Custom Number of People Tip Amount /
-    person Total / person Reset
+    <main class="column vr-center hr-center screen-height">
+      <h1 class="uppercase absolute">Splitter</h1>
+      <div class="row card vr-center">
+        <!-- Part 1 -->
+        <div id="values" class="">
+          <!-- Bill -->
+          <div>
+            <p>Bill</p>
+            <input type="text" />
+          </div>
+
+          <!-- Select Tip -->
+          <div class="select-tip">
+            <p>Select Tip %</p>
+            <div class="row space-between">
+              <button>5%</button>
+              <button>10%</button>
+              <button>15%</button>
+            </div>
+            <div class="row space-between">
+              <button>25%</button>
+              <button>50%</button>
+              <input type="text" placeholder="Custom" />
+            </div>
+          </div>
+
+          <!-- Numer of People -->
+          <div>
+            <p>Number of People</p>
+            <input type="text" />
+          </div>
+        </div>
+
+        <!-- Part 2 -->
+        <div id="calculation" class="column space-between">
+          <div class="column">
+            <!-- Total Amount -->
+            <div class="row space-between">
+              <p class="column">Tip Amount <span>/ person</span></p>
+              <p>$4.25</p>
+            </div>
+            <div class="row space-between">
+              <p class="column">Tip Amount <span>/ person</span></p>
+              <p>$4.25</p>
+            </div>
+          </div>
+
+          <!-- Reset Button -->
+          <button class="uppercase">Reset</button>
+        </div>
+      </div>
+    </main>
   </body>
 </html>

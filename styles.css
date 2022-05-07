@@ -9,16 +9,13 @@
 - Very light grayish cyan: hsl(189, 41%, 97%)
 - White: hsl(0, 0%, 100%)
 */
-  --bg: #0a0c1b;
+  --bg: #c5e4e7;
   --white: #ffffff;
 
-  --primary: rgb(166, 96, 214);
-  --primary-dark: #1c1938;
-  --primary-shadow: rgba(167, 96, 214, 0.63);
+  --primary: #26c2ad;
+  --primary-dark: #00474b;
 
-  --text-color: #b0afc3;
-  /* - Font size (form inputs): 24px */
-
+  --text-color: #567774;
   --font-1: "Space Mono", system-ui;
   --font-weight: 700;
 
@@ -33,27 +30,16 @@ body {
   font-size: 15px;
 }
 
-/* Card Styling */
-.card {
-  background: var(--primary-dark);
-  height: 445px;
-  border-radius: 5px 0 0 5px;
-  padding: 0 25px;
+/* Components */
+button {
+  background: var(--primary);
+  border: none;
+  padding: 10px 25px;
+  border-radius: 5px;
 }
-.card div {
-  width: 75%;
-  padding-inline-start: 40px;
-}
-.card ul {
-  width: 70%;
-}
-/* Image Styling */
-.image {
-  height: 445px;
-  border-radius: 0 5px 5px 0;
-  background: linear-gradient(rgb(67 0 110 / 64%), var(--primary-shadow)),
-    url(images/image-header-desktop.jpg);
-  filter: contrast(1.2);
+input {
+  padding: 5px;
+  width: -webkit-fill-available;
 }
 
 /* Text Appearance */
@@ -69,23 +55,34 @@ p {
   line-height: 1.7;
 }
 
-.list li {
-  font-weight: 900;
-  color: white;
-  font-size: 25px;
-}
-.list li span {
-  padding: 5px 0;
-  font-weight: 300;
-  color: #9291a3;
-  text-transform: uppercase;
-  font-size: 13px;
-  font-family: var(--font-2);
+/* Card Styling */
+.card {
+  background: var(--white);
+  border-radius: 10px;
+  padding: 25px;
 }
 
-.card,
-.image {
-  width: 35%;
+/* Part 1 */
+#values {
+  margin-right: 35px;
+}
+
+.select-tip button {
+  margin: 5px;
+}
+.select-tip input {
+  width: 70px;
+}
+
+/* Part 2 */
+#calculation {
+  background: var(--primary-dark);
+  color: var(--white);
+  padding: 20px;
+  border-radius: 10px;
+}
+#calculation > div > div > p:nth-child(1) {
+  margin-right: 50px;
 }
 
 /* Predefined CSS */
