@@ -21,7 +21,7 @@ function calculate() {
   // Custom tip
   if (custom_percent.value) {
     let custom = parseFloat(custom_percent.value),
-      total_value = (bill_value * custom) / 100;
+      total_value = ((bill_value * (custom / 100)))/number_of_people_value;
 
     tip_amount.innerHTML = "$" + total_value.toFixed(2);
     total.innerHTML = "$" + (number_of_people_value * total_value).toFixed(2);
@@ -30,10 +30,10 @@ function calculate() {
   // Fixed Tip
   else {
     let fixed_tip = bill_value * (tip_percent_value / 100),
-      total_value = bill_value + fixed_tip;
+      total_value = fixed_tip / number_of_people_value;
 
-    tip_amount.innerHTML = "$" + fixed_tip.toFixed(2);
-    total.innerHTML = "$" + (number_of_people_value * fixed_tip).toFixed(2);
+    tip_amount.innerHTML = "$" + total_value.toFixed(2);
+    total.innerHTML = "$" + (total_value * number_of_people_value).toFixed(2);
   }
 }
 
